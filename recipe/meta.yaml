@@ -11,15 +11,17 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
+  run_exports:
+    # very good historically: https://abi-laboratory.pro/tracker/timeline/libgcrypt/
+    - {{ pin_subpackage('libgcrypt') }}
 
 requirements:
   build:
-    - toolchain
-    - libgpg-error 1.27
-  run:
-    - libgpg-error 1.27
+    - {{ compiler('c') }}
+  host:
+    - libgpg-error
 
 test:
   commands:
