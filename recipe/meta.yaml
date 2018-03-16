@@ -1,6 +1,6 @@
 {% set name = "libgcrypt" %}
-{% set version = "1.8.0" %}
-{% set sha256 = "23e49697b87cc4173b03b4757c8df4314e3149058fa18bdc4f82098f103d891b" %}
+{% set version = "1.8.2" %}
+{% set sha256 = "c8064cae7558144b13ef0eb87093412380efa16c4ee30ad12ecb54886a524c07" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win]
   run_exports:
     # very good historically: https://abi-laboratory.pro/tracker/timeline/libgcrypt/
