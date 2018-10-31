@@ -1,6 +1,6 @@
 {% set name = "libgcrypt" %}
-{% set version = "1.8.3" %}
-{% set sha256 = "66ec90be036747602f2b48f98312361a9180c97c68a690a5f376fa0f67d0af7c" %}
+{% set version = "1.8.4" %}
+{% set sha256 = "f638143a0672628fde0cad745e9b14deb85dffb175709cacc1f4fe24b93f2227" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   skip: True  # [win]
   run_exports:
    - {{ pin_subpackage('libgcrypt') }}
