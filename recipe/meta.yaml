@@ -31,8 +31,12 @@ test:
 
 about:
   home: https://gnupg.org/software/index.html
-  license: GPL-2.0
-  license_family: GPL2
+  license: LGPL-2.1-or-later AND GPL-2.0-or-later
+  license_file:
+    - COPYING.LIB
+    - COPYING
+    - LICENSES
+  license_family: GPL
   summary: 'a general purpose cryptographic library originally based on code from GnuPG.'
 
 extra:
