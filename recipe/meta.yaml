@@ -1,6 +1,6 @@
 {% set name = "libgcrypt" %}
-{% set version = "1.9.3" %}
-{% set sha256 = "97ebe4f94e2f7e35b752194ce15a0f3c66324e0ff6af26659bbfb5ff2ec328fd" %}
+{% set version = "1.10.1" %}
+{% set sha256 = "ef14ae546b0084cd84259f61a55e07a38c3b53afc0f546bffcef2f01baffe9de" %}
 
 package:
   name: {{ name|lower }}
