@@ -1,14 +1,13 @@
 {% set name = "libgcrypt" %}
-{% set version = "1.9.3" %}
-{% set sha256 = "97ebe4f94e2f7e35b752194ce15a0f3c66324e0ff6af26659bbfb5ff2ec328fd" %}
+{% set version = "1.11.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://gnupg.org/ftp/gcrypt/libgcrypt/{{ name }}-{{ version }}.tar.bz2
-  sha256: {{ sha256 }}
+  url: https://gnupg.org/ftp/gcrypt/{{ name }}/{{ name }}-{{ version }}.tar.bz2
+  sha256: 6ba59dd192270e8c1d22ddb41a07d95dcdbc1f0fb02d03c4b54b235814330aac
 
 build:
   number: 0
@@ -18,17 +17,20 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - make     # [unix]
     - libtool  # [unix]
   host:
-    - libgpg-error
+    - libgpg-error 1.51
 
 test:
   commands:
-    - test -f $PREFIX/lib/libgcrypt.so  # [linux]
-    - conda inspect linkages {{ name }}
-    - conda inspect objects {{ name }}  # [osx]
+    - test -f $PREFIX/bin/dumpsexp
+    - test -f $PREFIX/bin/hmac256
+    - test -f $PREFIX/bin/mpicalc
+    - test -f $PREFIX/include/gcrypt.h 
+    - test -f $PREFIX/lib/libgcrypt${SHLIB_EXT}  # [unix]
 
 about:
   home: https://gnupg.org/software/index.html
@@ -38,7 +40,13 @@ about:
     - COPYING
     - LICENSES
   license_family: GPL
-  summary: 'a general purpose cryptographic library originally based on code from GnuPG.'
+  summary: General purpose cryptographic library
+  description: |
+    Libgcrypt is a general purpose crypto library based on the code
+    used in GnuPG.  Libgcrypt depends on the library `libgpg-error',
+    which must be installed correctly before Libgcrypt is to be built.
+  dev_url: https://github.com/gpg/libgcrypt
+  doc_url: https://github.com/gpg/libgcrypt/tree/master/doc
 
 extra:
   recipe-maintainers:
