@@ -1,5 +1,5 @@
 {% set name = "libgcrypt" %}
-{% set version = "1.11.2" %}
+{% set version = "1.12.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://gnupg.org/ftp/gcrypt/{{ name }}/{{ name }}-{{ version }}.tar.bz2
-  sha256: 6ba59dd192270e8c1d22ddb41a07d95dcdbc1f0fb02d03c4b54b235814330aac
+  sha256: 7df5c08d952ba33f9b6bdabdb06a61a78b2cf62d2122c2d1d03a91a79832aa3c
 
 build:
   number: 0
@@ -22,7 +22,7 @@ requirements:
     - make     # [unix]
     - libtool  # [unix]
   host:
-    - libgpg-error 1.51
+    - libgpg-error 1.58
 
 test:
   commands:
