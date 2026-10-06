@@ -1,5 +1,5 @@
 {% set name = "libgcrypt" %}
-{% set version = "1.12.1" %}
+{% set version = "1.12.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,19 +7,19 @@ package:
 
 source:
   url: https://gnupg.org/ftp/gcrypt/{{ name }}/{{ name }}-{{ version }}.tar.bz2
-  sha256: 7df5c08d952ba33f9b6bdabdb06a61a78b2cf62d2122c2d1d03a91a79832aa3c
+  sha256: d77f68f48879510e79a2f65977ccc68981781ea0923e5bdffac2a193ea3d660e
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
   run_exports:
-   - {{ pin_subpackage('libgcrypt') }}
+    - {{ pin_subpackage('libgcrypt') }}
 
 requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - make     # [unix]
+    - make  # [unix]
     - libtool  # [unix]
   host:
     - libgpg-error 1.58
@@ -29,7 +29,7 @@ test:
     - test -f $PREFIX/bin/dumpsexp
     - test -f $PREFIX/bin/hmac256
     - test -f $PREFIX/bin/mpicalc
-    - test -f $PREFIX/include/gcrypt.h 
+    - test -f $PREFIX/include/gcrypt.h
     - test -f $PREFIX/lib/libgcrypt${SHLIB_EXT}  # [unix]
 
 about:
