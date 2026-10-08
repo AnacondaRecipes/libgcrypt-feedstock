@@ -2,7 +2,7 @@
 {% set version = "1.12.4" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
@@ -22,6 +22,8 @@ requirements:
     - make  # [unix]
     - libtool  # [unix]
   host:
+    # Upstream source: https://github.com/gpg/libgcrypt/blob/libgcrypt-1.12.4/configure.ac#L77
+    # but version 1.56 is not in the channel, hovewer 1.56 and 1.58 are fully backward compatible
     - libgpg-error 1.58
 
 test:
